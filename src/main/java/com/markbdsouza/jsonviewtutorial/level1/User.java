@@ -1,4 +1,4 @@
-package com.markbdsouza.jsonviewtutorial.LevelOne;
+package com.markbdsouza.jsonviewtutorial.level1;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;

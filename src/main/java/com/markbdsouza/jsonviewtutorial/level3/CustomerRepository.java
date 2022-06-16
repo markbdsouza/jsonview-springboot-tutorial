@@ -1,4 +1,4 @@
-package com.markbdsouza.jsonviewtutorial.LevelThree;
+package com.markbdsouza.jsonviewtutorial.level3;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

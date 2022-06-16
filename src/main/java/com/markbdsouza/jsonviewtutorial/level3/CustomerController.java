@@ -1,4 +1,4 @@
-package com.markbdsouza.jsonviewtutorial.LevelThree;
+package com.markbdsouza.jsonviewtutorial.level3;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;

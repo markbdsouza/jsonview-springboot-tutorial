@@ -1,4 +1,4 @@
-package com.markbdsouza.jsonviewtutorial.LevelOne;
+package com.markbdsouza.jsonviewtutorial.level1;
 
 /**
  * List of Views for LevelOne functionality.

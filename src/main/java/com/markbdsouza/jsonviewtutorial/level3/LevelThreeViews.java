@@ -1,4 +1,4 @@
-package com.markbdsouza.jsonviewtutorial.LevelThree;
+package com.markbdsouza.jsonviewtutorial.level3;
 
 /**
  * List of Views for LevelThree functionality.
