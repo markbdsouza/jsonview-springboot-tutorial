@@ -1,6 +1,8 @@
-package com.markbdsouza.jsonviewtutorial.LevelTwo;
+package com.markbdsouza.jsonviewtutorial.level2;
 
 import com.fasterxml.jackson.annotation.JsonView;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +13,8 @@ import java.util.List;
 
 @RestController
 public class StudentController {
+
+    Logger log = LoggerFactory.getLogger(StudentController.class);
 
     /**
      * GET without any json view
@@ -63,7 +67,7 @@ public class StudentController {
      */
     @PostMapping("/levelTwo/default")
     public Student postLevelTwoDefault(@RequestBody Student student) {
-        System.out.println(student);
+        log.info(student.toString());
         return student;
     }
 
@@ -75,7 +79,7 @@ public class StudentController {
      */
     @PostMapping("/levelTwo/public")
     public Student postLevelTwoBasic(@RequestBody @JsonView(LevelTwoViews.Public.class) Student student) {
-        System.out.println(student);
+        log.info(student.toString());
         return student;
     }
 

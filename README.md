@@ -1,14 +1,15 @@
 # jsonview-springboot-tutorial
 A tutorial for JsonView annotation by Jackson in Spring Boot 
-Entire tutorial can be found at : 
+Entire tutorial can be found at : https://dev.to/markbdsouza
 
 ## Endpoints for Unit Testing
 Below are the endpoints for testing.
 
 ### Level 1 
 GET and POST for a single Class with multiple views
-1.HTTP GET Request: http://localhost:8080/levelOne/default 
-Response:
+#### Endpoint 1: Without any View
+HTTP GET Request: http://localhost:8080/levelOne/default 
+Response:```
    {
    "userId": 1,
    "firstName": "Mark",
@@ -16,42 +17,42 @@ Response:
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO",
    "isActive": true
-   }
-
-2. HTTP GET Request: http://localhost:8080/levelOne/public
-Response:
+   }```
+#### Endpoint 2: With Public View
+HTTP GET Request: http://localhost:8080/levelOne/public
+Response:```
    {
    "userId": 1
-   }
-   
-3. HTTP GET Request: http://localhost:8080/levelOne/name
-Response:
+   }```
+#### Endpoint 3: With UserNameDetails View
+HTTP GET Request: http://localhost:8080/levelOne/name
+Response:```
    {
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza"
-   }
-   
-4. HTTP GET Request: http://localhost:8080/levelOne/details
-Response:
+   }```
+#### Endpoint 4: With UserDetails View
+HTTP GET Request: http://localhost:8080/levelOne/details
+Response:```
    {
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza",
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO"
-   }
-
-5. HTTP GET Request: http://localhost:8080/levelOne/other
-Response:
+   }```
+#### Endpoint 5: With OtherDetails View
+HTTP GET Request: http://localhost:8080/levelOne/other
+Response:```
    {
    "userId": 1,
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO"
-   }
-   
-6. HTTP POST Request: http://localhost:8080/levelOne/default
-Request Body :
+   }```
+#### Endpoint 6: POST Without any Views
+HTTP POST Request: http://localhost:8080/levelOne/default
+Request Body :```
    {
    "userId": 1,
    "firstName": "Mark",
@@ -59,8 +60,8 @@ Request Body :
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO",
    "isActive": true
-   }
-Response:
+   }```
+Response:```
    {
    "userId": 1,
    "firstName": "Mark",
@@ -68,10 +69,10 @@ Response:
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO",
    "isActive": true
-   }
-   
-7. HTTP POST Request: http://localhost:8080/levelOne/name
-Request Body :
+   }```
+#### Endpoint 7: POST with JsonView
+HTTP POST Request: http://localhost:8080/levelOne/name
+Request Body :```
    {
    "userId": 1,
    "firstName": "Mark",
@@ -79,8 +80,8 @@ Request Body :
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO",
    "isActive": true
-   } 
-Response:
+   } ```
+Response:```
    {
    "userId": 1,
    "firstName": "Mark",
@@ -88,12 +89,13 @@ Response:
    "email": null,
    "organization": null,
    "isActive": null
-   }
+   }```
 
 ### Level 2
 GET and POST for a multiple Classes with multiple views
-1. HTTP GET Request: http://localhost:8080/levelTwo/default
-Response:
+#### Endpoint 1: Without any View
+HTTP GET Request: http://localhost:8080/levelTwo/default
+Response:```
    {
    "fullName": "Mark Dsouza",
    "height": 150,
@@ -115,17 +117,17 @@ Response:
    "school": {
    "schoolName": "Indian Public School"
    }
-   }
-   
-2. HTTP GET Request: http://localhost:8080/levelTwo/public
-Response:
+   }```
+#### Endpoint 2: With Public View 
+HTTP GET Request: http://localhost:8080/levelTwo/public
+Response:```
    {
    "fullName": "Mark Dsouza",
    "age": 15
-   }
-   
-3. HTTP GET Request: http://localhost:8080/levelTwo/basic
-Response:
+   }```
+#### Endpoint 3: With JsonView   
+HTTP GET Request: http://localhost:8080/levelTwo/basic
+Response:```
    {
    "fullName": "Mark Dsouza",
    "height": 150,
@@ -135,10 +137,10 @@ Response:
    "school": {
    "schoolName": "Indian Public School"
    }
-   }
-   
-4. HTTP GET Request: http://localhost:8080/levelTwo/all
-Response:
+   }```
+#### Endpoint 4: With JsonView
+HTTP GET Request: http://localhost:8080/levelTwo/all
+Response:```
    {
    "fullName": "Mark Dsouza",
    "height": 150,
@@ -158,10 +160,10 @@ Response:
    "school": {
    "schoolName": "Indian Public School"
    }
-   }
-   
-5. HTTP POST Request: http://localhost:8080/levelTwo/default
-Request Body:
+   }```
+#### Endpoint 5: POST Without any View
+HTTP POST Request: http://localhost:8080/levelTwo/default
+Request Body:```
    {
    "fullName": "Mark Dsouza",
    "height": 150,
@@ -183,9 +185,8 @@ Request Body:
    "school": {
    "schoolName": "Indian Public School"
    }
-   }
-   
-Response Body:
+   }   ```
+Response Body:```
    {
    "fullName": "Mark Dsouza",
    "height": 150.0,
@@ -207,10 +208,11 @@ Response Body:
    "school": {
    "schoolName": "Indian Public School"
    }
-   }
+   }```
 
-6. HTTP POST Request: http://localhost:8080/levelTwo/public
-Request Body:    {
+#### Endpoint 6: POST With JsonView
+HTTP POST Request: http://localhost:8080/levelTwo/public
+Request Body:    ```{
    "fullName": "Mark Dsouza",
    "height": 150,
    "weight": 49,
@@ -231,9 +233,8 @@ Request Body:    {
    "school": {
    "schoolName": "Indian Public School"
    }
-   }
-   
-Response:
+   }   ```
+Response:```
    {
    "fullName": "Mark Dsouza",
    "height": 0.0,
@@ -242,12 +243,13 @@ Response:
    "className": null,
    "scores": null,
    "school": null
-   }
+   }```
 
 ### Level 3
 GET Call with entities. Data fetched from the H2 Database using Spring Data JPA.
-1. HTTP GET Request: http://localhost:8080/levelThree/default
-Response: [
+#### Endpoint 1: GET from DB without views
+HTTP GET Request: http://localhost:8080/levelThree/default
+Response: ```[
    {
    "id": 1,
    "customerId": "6252fcab-a17e-4af4-aa70-0fda826e67cf",
@@ -278,10 +280,10 @@ Response: [
    "firstName": "Griffy",
    "lastName": "Crownshaw"
    }
-   ]
-   
-2. HTTP GET Request: http://localhost:8080/levelThree/public
-Response:
+   ]```
+#### Endpoint 2: GET from DB without public JsonView   
+HTTP GET Request: http://localhost:8080/levelThree/public
+Response:```
    [
    {
    "customerId": "6252fcab-a17e-4af4-aa70-0fda826e67cf"
@@ -298,10 +300,10 @@ Response:
    {
    "customerId": "c93a656d-eff3-4c77-a8e0-5f29214c2b51"
    }
-   ]
-   
-3. HTTP GET Request: http://localhost:8080/levelThree/details
-Response:
+   ]```
+#### Endpoint 3: GET from DB without details JsonView
+HTTP GET Request: http://localhost:8080/levelThree/details
+Response:```
    [
    {
    "customerId": "6252fcab-a17e-4af4-aa70-0fda826e67cf",
@@ -328,5 +330,5 @@ Response:
    "firstName": "Griffy",
    "lastName": "Crownshaw"
    }
-   ]
-   
+   ]```
+      
