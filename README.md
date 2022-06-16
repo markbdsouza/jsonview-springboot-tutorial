@@ -1,243 +1,250 @@
-# jsonview-springboot-tutorial
-A tutorial for JsonView annotation by Jackson in Spring Boot 
-Entire tutorial can be found at : https://dev.to/markbdsouza
+# JsonView Spring Boot Tutorial 
+Author: https://github.com/markbdsouza 
+
+## Introduction
+This is a tutorial for JsonView annotation by Jackson in Spring Boot.
+JsonView is a powerful annotation that helps reduce a lot of boilerplate code.  
+The tutorial has been split into 3 packages in code - level1, level2, level3.
+Each level increasingly provides code on increasin uses of JsonView in a Spring Boot application.
+The entire writeup can be found at : https://dev.to/markbdsouza/jacksons-jsonview-with-springboot-tutorial-56ba
 
 ## Endpoints for Unit Testing
-Below are the endpoints for testing.
+Below are the endpoints for testing the code.
 
 ### Level 1 
-GET and POST for a single Class with multiple views
+GET and POST for a single Class with multiple views. Level 1 will introduce the concepts and see how it works together.
 #### Endpoint 1: Without any View
 HTTP GET Request: http://localhost:8080/levelOne/default 
 Response:
 ```
-   {
+{
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza",
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO",
    "isActive": true
-   }
+}
 ```
 #### Endpoint 2: With Public View
 HTTP GET Request: http://localhost:8080/levelOne/public
 Response:
 ```
-   {
+{
    "userId": 1
-   }
+}
 ```
 #### Endpoint 3: With UserNameDetails View
 HTTP GET Request: http://localhost:8080/levelOne/name
 Response:
 ```
-   {
+{
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza"
-   }
+}
 ```
 #### Endpoint 4: With UserDetails View
 HTTP GET Request: http://localhost:8080/levelOne/details
 Response:
 ```
-   {
+{
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza",
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO"
-   }
+}
 ```
 #### Endpoint 5: With OtherDetails View
 HTTP GET Request: http://localhost:8080/levelOne/other
 Response:
 ```
-   {
+{
    "userId": 1,
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO"
-   }
+}
 ```
 #### Endpoint 6: POST Without any Views
 HTTP POST Request: http://localhost:8080/levelOne/default
 Request Body :
 ```
-   {
+{
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza",
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO",
    "isActive": true
-   }
+}
 ```
 Response:
 ```
-   {
+{
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza",
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO",
    "isActive": true
-   }
+}
 ```
 #### Endpoint 7: POST with JsonView
 HTTP POST Request: http://localhost:8080/levelOne/name
 Request Body :
 ```
-   {
+{
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza",
    "email": "mark.benjamin.dsouza@google.com",
    "organization": "DEV.TO",
    "isActive": true
-   } 
+} 
 ```
 Response:
 ```
-   {
+{
    "userId": 1,
    "firstName": "Mark",
    "lastName": "Dsouza",
    "email": null,
    "organization": null,
    "isActive": null
-   }
+}
 ```
 
 ### Level 2
-GET and POST for a multiple Classes with multiple views
+GET and POST for a multiple Classes with multiple views.
+In Level 2, we will check classes that are related to one another and how GET and POST requests can be implemented on them.
 #### Endpoint 1: Without any View
 HTTP GET Request: http://localhost:8080/levelTwo/default
 Response:
 ```
-   {
+{
    "fullName": "Mark Dsouza",
    "height": 150,
    "weight": 49,
    "age": 15,
    "className": "VIII",
    "scores": [
-   {
-   "subject": "Math",
-   "score": 80,
-   "teacher": "Mr. John Watts"
-   },
-   {
-   "subject": "English",
-   "score": 80,
-   "teacher": "Mrs. Mary Johnson"
-   }
+       {
+       "subject": "Math",
+       "score": 80,
+       "teacher": "Mr. John Watts"
+       },
+       {
+       "subject": "English",
+       "score": 80,
+       "teacher": "Mrs. Mary Johnson"
+       }
    ],
    "school": {
-   "schoolName": "Indian Public School"
+        "schoolName": "Indian Public School"
    }
-   }
+}
 ```
 #### Endpoint 2: With Public View 
 HTTP GET Request: http://localhost:8080/levelTwo/public
 Response:
 ```
-   {
+{
    "fullName": "Mark Dsouza",
    "age": 15
-   }
+}
 ```
-#### Endpoint 3: With JsonView   
+#### Endpoint 3: With BasicStudentDetails View   
 HTTP GET Request: http://localhost:8080/levelTwo/basic
 Response:
 ```
-   {
+{
    "fullName": "Mark Dsouza",
    "height": 150,
    "weight": 49,
    "age": 15,
    "className": "VIII",
    "school": {
-   "schoolName": "Indian Public School"
-   }
-   }
+       "schoolName": "Indian Public School"
+       }
+}
 ```
-#### Endpoint 4: With JsonView
+#### Endpoint 4: With AllStudentDetails View 
 HTTP GET Request: http://localhost:8080/levelTwo/all
 Response:
 ```
-   {
+{
    "fullName": "Mark Dsouza",
    "height": 150,
    "weight": 49,
    "age": 15,
    "className": "VIII",
    "scores": [
-   {
-   "subject": "Math",
-   "score": 80
-   },
-   {
-   "subject": "English",
-   "score": 80
-   }
+       {
+       "subject": "Math",
+       "score": 80
+       },
+       {
+       "subject": "English",
+       "score": 80
+       }
    ],
    "school": {
-   "schoolName": "Indian Public School"
-   }
-   }
+       "schoolName": "Indian Public School"
+       }
+}
 ```
 #### Endpoint 5: POST Without any View
 HTTP POST Request: http://localhost:8080/levelTwo/default
 Request Body:
 ```
-   {
+{
    "fullName": "Mark Dsouza",
    "height": 150,
    "weight": 49,
    "age": 15,
    "className": "VIII",
    "scores": [
-   {
-   "subject": "Math",
-   "score": 80,
-   "teacher": "Mr. John Watts"
-   },
-   {
-   "subject": "English",
-   "score": 80,
-   "teacher": "Mrs. Mary Johnson"
-   }
+       {
+       "subject": "Math",
+       "score": 80,
+       "teacher": "Mr. John Watts"
+       },
+       {
+       "subject": "English",
+       "score": 80,
+       "teacher": "Mrs. Mary Johnson"
+       }
    ],
    "school": {
-   "schoolName": "Indian Public School"
-   }
-   }   
+       "schoolName": "Indian Public School"
+       }
+}   
 ```
 Response Body:
 ```
-   {
+{
    "fullName": "Mark Dsouza",
    "height": 150.0,
    "weight": 49.0,
    "age": 15,
    "className": "VIII",
    "scores": [
-   {
-   "subject": "Math",
-   "score": 80,
-   "teacher": "Mr. John Watts"
-   },
-   {
-   "subject": "English",
-   "score": 80,
-   "teacher": "Mrs. Mary Johnson"
-   }
+       {
+       "subject": "Math",
+       "score": 80,
+       "teacher": "Mr. John Watts"
+       },
+       {
+       "subject": "English",
+       "score": 80,
+       "teacher": "Mrs. Mary Johnson"
+       }
    ],
    "school": {
-   "schoolName": "Indian Public School"
-   }
-   }
+       "schoolName": "Indian Public School"
+       }
+}
 ```
 
 #### Endpoint 6: POST With JsonView
